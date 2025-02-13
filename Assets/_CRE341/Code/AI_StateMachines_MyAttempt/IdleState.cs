@@ -14,13 +14,12 @@ public class IdleState : MonoBehaviour, IState
     public void EnterState()
     {
         Debug.Log("Idle - Enter");
+        objRenderer.material.color = Random.ColorHSV();
     }
 
     public void UpdateState()
     {
         Debug.Log("Idle - Update");
-
-        objRenderer.material.color = Random.ColorHSV();
     }
 
     public void ExitState()

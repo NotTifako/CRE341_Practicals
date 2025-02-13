@@ -5,20 +5,30 @@ public class NPCStateManager : MonoBehaviour
     IState currentState;
     IdleState idleState;
     SeePlayerState seePlayerState;
+    AttackState attackState;
 
     [SerializeField] float distance;
+    [SerializeField] float seeDistance = 10;
+    [SerializeField] float attackDistance = 3;
+    [SerializeField] float seeHysterisis = 1;
+    [SerializeField] float attackHysterisis = 1;
 
     [SerializeField] GameObject player;
+
+    [SerializeField] string currSta;
 
     void Awake()
     {
         distance = Mathf.Infinity;
         idleState = GetComponent<IdleState>();
-        seePlayerState = GetComponent<SeePlayerState>();        
+        seePlayerState = GetComponent<SeePlayerState>();      
+        attackState = GetComponent<AttackState>();
+
         if(player == null)
         {
             player = GameObject.Find("Player");
         }
+
         currentState = idleState;
     }
 
@@ -37,13 +47,24 @@ public class NPCStateManager : MonoBehaviour
         currentState.UpdateState();
 
         distance = Vector3.Distance(transform.position, player.transform.position);
-        if(distance < 10)
+
+        if(distance < seeDistance)
         {
-            SetState(seePlayerState);
+            if(distance < attackDistance)
+            {
+                SetState(attackState);
+                currSta = "Attack";
+            }
+            else if (distance > attackDistance + attackHysterisis)
+            {
+                SetState(seePlayerState);
+                currSta = "See Player";
+            }
         }
-        if (distance > 11)
+        else if (distance > seeDistance + seeHysterisis)
         {
             SetState(idleState);
+            currSta = "Idle";
         }
     }
 }
