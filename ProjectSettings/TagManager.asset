@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - Walls
   - NPC
+  - THing
   layers:
   - Default
   - TransparentFX

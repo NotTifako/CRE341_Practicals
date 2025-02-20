@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 509230442}
   - component: {fileID: 509230444}
   - component: {fileID: 509230445}
+  - component: {fileID: 509230446}
   m_Layer: 7
   m_Name: Map Generator
   m_TagString: Untagged
@@ -145,7 +146,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 509230441}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1647bbaf26a4040d3bc6ffe5c06dd0d7, type: 3}
   m_Name: 
@@ -157,7 +158,7 @@ MonoBehaviour:
   height: 128
   seed: 0
   useRandomSeed: 1
-  randomFillPercent: 70
+  randomFillPercent: 49
   numberOfNPCs: 5
   surface: {fileID: 797153120}
   raycastHeight: 50
@@ -212,6 +213,31 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 0
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &509230446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509230441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1770ce60c8072f3469d01c0da8e5b85f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1559428518}
+  npcPrefab: {fileID: 2286358169494211035, guid: a884620a414a9f948867359c297b2ae6, type: 3}
+  thingPrefab: {fileID: 1649675742335316061, guid: 3c5cafef7ccf3c046aa30160b547dae9, type: 3}
+  groundObject: {fileID: 631091595}
+  width: 128
+  height: 128
+  seed: 0
+  useRandomSeed: 1
+  randomFillPercent: 49
+  numberOfNPCs: 100
+  surface: {fileID: 797153120}
+  raycastHeight: 50
+  maxAttempts: 100
 --- !u!1 &542508511
 GameObject:
   m_ObjectHideFlags: 0
